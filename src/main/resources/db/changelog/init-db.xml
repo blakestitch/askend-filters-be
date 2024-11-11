@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="init-db" author="Jevgeni Aigro" logicalFilePath="init-db.xml">
+        <createTable tableName="filter">
+            <column autoIncrement="true"
+                    name="id"
+                    type="bigint">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_filter"/>
+            </column>
+            <column name="name"
+                    type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="criteria">
+            <column autoIncrement="true"
+                    name="id"
+                    type="bigint">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_criteria"/>
+            </column>
+            <column name="type"
+                    type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comparing_condition"
+                    type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value"
+                    type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="filter_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_criteria_filter" referencedTableName="filter"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

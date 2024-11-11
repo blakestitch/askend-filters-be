@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="test-data" author="Jevgeni Aigro" logicalFilePath="test-data.xml" context="test-data">
+        <insert tableName="filter">
+            <column name="name" value="name1"/>
+        </insert>
+        <insert tableName="criteria">
+            <column name="type" value="AMOUNT"/>
+            <column name="comparing_condition" value="amount condition one"/>
+            <column name="value" value="11"/>
+            <column name="filter_id" value="1"/>
+        </insert>
+        <insert tableName="criteria">
+            <column name="type" value="TITLE"/>
+            <column name="comparing_condition" value="title condition two"/>
+            <column name="value" value="bla"/>
+            <column name="filter_id" value="1"/>
+        </insert>
+
+        <insert tableName="filter">
+            <column name="id" value="2"/>
+            <column name="name" value="name2"/>
+        </insert>
+        <insert tableName="criteria">
+            <column name="type" value="AMOUNT"/>
+            <column name="comparing_condition" value="amount condition two"/>
+            <column name="value" value="22"/>
+            <column name="filter_id" value="2"/>
+        </insert>
+        <insert tableName="criteria">
+            <column name="type" value="TITLE"/>
+            <column name="comparing_condition" value="title condition one"/>
+            <column name="value" value="blabla"/>
+            <column name="filter_id" value="2"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
