@@ -18,13 +18,12 @@ class ResourceToDomainMapperUnitTest {
     @Test
     void shouldMapToDomain() {
         // given
-        FilterResource filterResource = FilterResource.builder().id(1L).name("name").criterias(List.of()).build();
+        FilterResource filterResource = FilterResource.builder().name("name").criterias(List.of()).build();
 
         // when
         Filter filter = mapper.mapToDomain(filterResource);
 
         // then
-        assertThat(filter.getId()).isNull();
         assertThat(filter.getName()).isEqualTo("name");
         assertThat(filter.getCriterias()).isEmpty();
     }

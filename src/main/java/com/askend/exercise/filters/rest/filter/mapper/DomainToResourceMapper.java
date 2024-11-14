@@ -12,7 +12,6 @@ public class DomainToResourceMapper {
 
     public FilterResource mapToResource(final Filter filter) {
         return FilterResource.builder()
-                .id(filter.getId())
                 .name(filter.getName())
                 .criterias(filter.getCriterias().stream().map(this::mapCriteria).toList())
                 .build();

@@ -18,7 +18,7 @@ class DomainToEntityMapperUnitTest {
     @Test
     void shouldMapToEntityToFilterEntity() {
         // given
-        Filter filter = Filter.builder().id(1L).name("name").criterias(null).build();
+        Filter filter = Filter.builder().name("name").criterias(List.of()).build();
 
         // when
         FilterEntity filterEntity = domainToEntityMapper.mapToEntity(filter);
@@ -26,7 +26,7 @@ class DomainToEntityMapperUnitTest {
         // then
         assertThat(filterEntity.getId()).isNull();
         assertThat(filterEntity.getName()).isEqualTo("name");
-        assertThat(filterEntity.getCriterias()).isNull();
+        assertThat(filterEntity.getCriterias()).isEmpty();
     }
 
     @Test
@@ -45,6 +45,7 @@ class DomainToEntityMapperUnitTest {
         assertThat(criteriaEntity.getType()).isEqualTo(com.askend.exercise.filters.persistence.entity.CriteriaType.AMOUNT);
         assertThat(criteriaEntity.getComparingCondition()).isEqualTo("compare");
         assertThat(criteriaEntity.getValue()).isEqualTo("22");
+        assertThat(criteriaEntity.getFilter()).isNotNull();
     }
 
 }

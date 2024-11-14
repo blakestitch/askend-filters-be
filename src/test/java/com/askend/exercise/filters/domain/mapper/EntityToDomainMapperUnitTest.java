@@ -18,15 +18,14 @@ class EntityToDomainMapperUnitTest {
     @Test
     void shouldMapMapToDomain() {
         // given
-        FilterEntity filterEntity = FilterEntity.builder().id(1L).name("name").criterias(null).build();
+        FilterEntity filterEntity = FilterEntity.builder().id(1L).name("name").criterias(List.of()).build();
 
         // when
         Filter filter = entityToDomainMapper.mapToDomain(filterEntity);
 
         // then
-        assertThat(filter.getId()).isEqualTo(1L);
         assertThat(filter.getName()).isEqualTo("name");
-        assertThat(filter.getCriterias()).isNull();
+        assertThat(filter.getCriterias()).isEmpty();
     }
 
     @Test

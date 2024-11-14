@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="test-data" author="Jevgeni Aigro" logicalFilePath="test-data.xml" context="test-data">
+    <changeSet id="test-data" author="Jevgeni Aigro" logicalFilePath="test-data.xml">
         <insert tableName="filter">
             <column name="name" value="name1"/>
         </insert>
@@ -23,7 +23,6 @@
         </insert>
 
         <insert tableName="filter">
-            <column name="id" value="2"/>
             <column name="name" value="name2"/>
         </insert>
         <insert tableName="criteria">
@@ -37,6 +36,22 @@
             <column name="comparing_condition" value="title condition one"/>
             <column name="value" value="blabla"/>
             <column name="filter_id" value="2"/>
+        </insert>
+
+        <insert tableName="filter">
+            <column name="name" value="name3"/>
+        </insert>
+        <insert tableName="criteria">
+            <column name="type" value="DATE"/>
+            <column name="comparing_condition" value="date condition one"/>
+            <column name="value" value="2001-01-01"/>
+            <column name="filter_id" value="3"/>
+        </insert>
+        <insert tableName="criteria">
+            <column name="type" value="DATE"/>
+            <column name="comparing_condition" value="date condition two"/>
+            <column name="value" value="2002-02-02"/>
+            <column name="filter_id" value="3"/>
         </insert>
     </changeSet>
 

@@ -13,7 +13,7 @@ public class CriteriaAllowedComparingConditionValidator {
     private final AllowedComparingConditionsService allowedComparingConditionsService;
 
     public void validate(Criteria criteria) {
-        boolean isAllowed = allowedComparingConditionsService.getConditionsByCriteriaType(criteria.getType()).contains(criteria.getValue());
+        boolean isAllowed = allowedComparingConditionsService.getConditionsByCriteriaType(criteria.getType()).contains(criteria.getComparingCondition());
         if (!isAllowed) {
             throw new CriteriaValidationException("Not allowed comparing condition for given type");
         }

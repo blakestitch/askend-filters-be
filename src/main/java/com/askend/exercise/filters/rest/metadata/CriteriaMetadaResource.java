@@ -1,4 +1,4 @@
-package com.askend.exercise.filters.rest.comparingconditions;
+package com.askend.exercise.filters.rest.metadata;
 
 
 import com.askend.exercise.filters.rest.filter.resource.CriteriaType;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @Value
 @Builder
-public class ComparingConditionsResource {
+public class CriteriaMetadaResource {
 
     CriteriaType criteriaType;
     List<String> comparingConditions;

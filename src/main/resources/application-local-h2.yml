@@ -1,7 +1,5 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:db;NON_KEYWORDS=value
     username: sa
     password: password
-  liquibase:
-    contexts: test-data

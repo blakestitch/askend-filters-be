@@ -13,14 +13,12 @@ import java.util.List;
 @Builder
 public class FilterResource {
 
-    Long id;
-
     @NotBlank
     @Size(min = 1, max = 50)
     String name;
 
     @Valid
     @NotEmpty
-    @Size(max = 100)
+    @Size(max = 20)
     List<CriteriaResource> criterias;
 }

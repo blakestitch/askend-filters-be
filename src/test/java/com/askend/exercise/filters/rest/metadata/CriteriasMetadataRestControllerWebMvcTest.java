@@ -1,4 +1,4 @@
-package com.askend.exercise.filters.rest.comparingconditions;
+package com.askend.exercise.filters.rest.metadata;
 
 import com.askend.exercise.filters.rest.filter.resource.CriteriaType;
 import org.junit.jupiter.api.Test;
@@ -15,25 +15,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(ComparingConditionsRestController.class)
-class ComparingConditionsRestControllerWebMvcTest {
+@WebMvcTest(CriteriasMetadataRestController.class)
+class CriteriasMetadataRestControllerWebMvcTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ComparingConditionsResourceAggregator comparingConditionsResourceAggregator;
+    private CriteriasMetadataResourceAggregator criteriasMetadataResourceAggregator;
 
     @Test
     void shouldReturnSomeConditions() throws Exception {
         // given
-        given(comparingConditionsResourceAggregator.getAllConditions()).willReturn(List.of(ComparingConditionsResource.builder()
+        given(criteriasMetadataResourceAggregator.getAllMetadata()).willReturn(List.of(CriteriaMetadaResource.builder()
                 .criteriaType(CriteriaType.TITLE)
                 .comparingConditions(List.of("one", "two"))
                 .build()));
 
         // when // then
-        this.mockMvc.perform(get("/api/comparing-conditions")).andDo(print()).andExpect(status().isOk())
+        this.mockMvc.perform(get("/api/criterias-metadata")).andDo(print()).andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].criteriaType").value("TITLE"))
                 .andExpect(jsonPath("$[0].comparingConditions[0]").value("one"))
                 .andExpect(jsonPath("$[0].comparingConditions[1]").value("two"));

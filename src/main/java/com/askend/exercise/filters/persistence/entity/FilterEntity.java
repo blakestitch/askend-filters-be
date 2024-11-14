@@ -1,5 +1,6 @@
 package com.askend.exercise.filters.persistence.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,7 +35,8 @@ public class FilterEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "filter")
-    private List<CriteriaEntity> criterias;
+    @OneToMany(mappedBy = "filter", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<CriteriaEntity> criterias = new ArrayList<>();
 
 }

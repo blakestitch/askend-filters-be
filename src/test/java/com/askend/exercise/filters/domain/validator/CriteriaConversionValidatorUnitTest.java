@@ -28,7 +28,7 @@ class CriteriaConversionValidatorUnitTest {
         // given
         Criteria criteria = Criteria.builder()
                 .type(CriteriaType.DATE)
-                .value("2010-01-01")
+                .value("2007-12-03T10:15:30.00Z")
                 .build();
 
         // when
@@ -52,7 +52,7 @@ class CriteriaConversionValidatorUnitTest {
     void shouldSucceedWithCorrectAmountCriteriaType() {
         // given
         Criteria criteria = Criteria.builder()
-                .type(CriteriaType.DATE)
+                .type(CriteriaType.AMOUNT)
                 .value("100")
                 .build();
 
@@ -64,7 +64,7 @@ class CriteriaConversionValidatorUnitTest {
     void shouldFailWithIncorrectAmountCriteriaType() {
         // given
         Criteria criteria = Criteria.builder()
-                .type(CriteriaType.DATE)
+                .type(CriteriaType.AMOUNT)
                 .value("sss")
                 .build();
 

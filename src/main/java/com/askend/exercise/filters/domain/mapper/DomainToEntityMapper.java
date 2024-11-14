@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component;
 public class DomainToEntityMapper {
 
     public FilterEntity mapToEntity(Filter filter) {
-        return FilterEntity.builder()
+        FilterEntity filterEntity = FilterEntity.builder()
                 .name(filter.getName())
                 .criterias(filter.getCriterias().stream().map(this::mapCriteria).toList())
                 .build();
+        filterEntity.getCriterias().forEach(criteriaEntity -> criteriaEntity.setFilter(filterEntity));
+        return filterEntity;
     }
 
     private CriteriaEntity mapCriteria(Criteria criteria) {

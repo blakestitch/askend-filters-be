@@ -52,7 +52,6 @@ class FilterRestControllerWebMvcTest {
         // given
         given(filterService.getAll()).willReturn(List.of(Filter.builder().build()));
         given(domainToResourceMapper.mapToResource(any())).willReturn(FilterResource.builder()
-                .id(23L)
                 .name("a name")
                 .criterias(List.of(CriteriaResource.builder()
                         .comparingCondition("comparing1")
@@ -63,7 +62,6 @@ class FilterRestControllerWebMvcTest {
 
         // when // then
         this.mockMvc.perform(get("/api/filters")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").value(23L))
                 .andExpect(jsonPath("$[0].name").value("a name"))
                 .andExpect(jsonPath("$[0].criterias[0].comparingCondition").value("comparing1"))
                 .andExpect(jsonPath("$[0].criterias[0].type").value("DATE"))

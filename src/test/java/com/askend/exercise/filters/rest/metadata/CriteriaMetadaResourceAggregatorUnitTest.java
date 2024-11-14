@@ -1,4 +1,4 @@
-package com.askend.exercise.filters.rest.comparingconditions;
+package com.askend.exercise.filters.rest.metadata;
 
 import com.askend.exercise.filters.domain.AllowedComparingConditionsService;
 import com.askend.exercise.filters.rest.filter.resource.CriteriaType;
@@ -15,13 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class ComparingConditionsResourceAggregatorUnitTest {
+class CriteriaMetadaResourceAggregatorUnitTest {
 
     @Mock
     private AllowedComparingConditionsService allowedComparingConditionsService;
 
     @InjectMocks
-    private ComparingConditionsResourceAggregator aggregator;
+    private CriteriasMetadataResourceAggregator aggregator;
 
     @BeforeEach
     void setUp() {
@@ -33,12 +33,12 @@ class ComparingConditionsResourceAggregatorUnitTest {
     @Test
     void shouldGetAllConditionsForAmount() {
         // given // when
-        List<ComparingConditionsResource> allConditions = aggregator.getAllConditions();
+        List<CriteriaMetadaResource> allConditions = aggregator.getAllMetadata();
 
         // then
         assertThat(allConditions)
                 .filteredOn(comparingConditionsResource -> comparingConditionsResource.getCriteriaType() == CriteriaType.AMOUNT)
-                .containsExactly(ComparingConditionsResource.builder()
+                .containsExactly(CriteriaMetadaResource.builder()
                         .criteriaType(CriteriaType.AMOUNT)
                         .comparingConditions(List.of("cond1"))
                         .build());
@@ -48,12 +48,12 @@ class ComparingConditionsResourceAggregatorUnitTest {
     @Test
     void shouldGetAllConditionsForDate() {
         // given // when
-        List<ComparingConditionsResource> allConditions = aggregator.getAllConditions();
+        List<CriteriaMetadaResource> allConditions = aggregator.getAllMetadata();
 
         // then
         assertThat(allConditions)
-                .filteredOn(comparingConditionsResource -> comparingConditionsResource.getCriteriaType() == CriteriaType.DATE)
-                .containsExactly(ComparingConditionsResource.builder()
+                .filteredOn(criteriaMetadaResource -> criteriaMetadaResource.getCriteriaType() == CriteriaType.DATE)
+                .containsExactly(CriteriaMetadaResource.builder()
                         .criteriaType(CriteriaType.DATE)
                         .comparingConditions(List.of("cond2"))
                         .build());
@@ -63,12 +63,12 @@ class ComparingConditionsResourceAggregatorUnitTest {
     @Test
     void shouldGetAllConditionsForTitle() {
         // given // when
-        List<ComparingConditionsResource> allConditions = aggregator.getAllConditions();
+        List<CriteriaMetadaResource> allConditions = aggregator.getAllMetadata();
 
         // then
         assertThat(allConditions)
-                .filteredOn(comparingConditionsResource -> comparingConditionsResource.getCriteriaType() == CriteriaType.TITLE)
-                .containsExactly(ComparingConditionsResource.builder()
+                .filteredOn(criteriaMetadaResource -> criteriaMetadaResource.getCriteriaType() == CriteriaType.TITLE)
+                .containsExactly(CriteriaMetadaResource.builder()
                         .criteriaType(CriteriaType.TITLE)
                         .comparingConditions(List.of("cond3"))
                         .build());

@@ -1,7 +1,5 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://db-askend:5432/postgres
     username: postgres
     password: postgres
-  liquibase:
-    contexts: test-data

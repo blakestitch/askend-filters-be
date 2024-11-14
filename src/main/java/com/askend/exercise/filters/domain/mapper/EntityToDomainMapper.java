@@ -12,7 +12,6 @@ public class EntityToDomainMapper {
 
     public Filter mapToDomain(FilterEntity entity) {
         return Filter.builder()
-                .id(entity.getId())
                 .name(entity.getName())
                 .criterias(entity.getCriterias().stream().map(this::mapCriteria).toList())
                 .build();

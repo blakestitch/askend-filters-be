@@ -9,8 +9,6 @@ import java.util.List;
 @Value
 public class Filter {
 
-    Long id;
-
     String name;
 
     List<Criteria> criterias;

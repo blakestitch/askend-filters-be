@@ -26,8 +26,8 @@ class CriteriaAllowedComparingConditionValidatorUnitTest {
     @Test
     void shouldBeValid() {
         // given
-        Criteria criteria = Criteria.builder().value("myValue").build();
-        given(allowedComparingConditionsService.getConditionsByCriteriaType(any())).willReturn(List.of("abc", "myValue"));
+        Criteria criteria = Criteria.builder().comparingCondition("myCond").build();
+        given(allowedComparingConditionsService.getConditionsByCriteriaType(any())).willReturn(List.of("abc", "myCond"));
 
         // when // then
         validator.validate(criteria);
@@ -36,8 +36,8 @@ class CriteriaAllowedComparingConditionValidatorUnitTest {
     @Test
     void shouldBeInvalid() {
         // given
-        Criteria criteria = Criteria.builder().value("myValue").build();
-        given(allowedComparingConditionsService.getConditionsByCriteriaType(any())).willReturn(List.of("abc", "NotMyValue"));
+        Criteria criteria = Criteria.builder().comparingCondition("myCond").build();
+        given(allowedComparingConditionsService.getConditionsByCriteriaType(any())).willReturn(List.of("abc", "NotMyCond"));
 
         // when // then
         assertThatExceptionOfType(CriteriaValidationException.class)
